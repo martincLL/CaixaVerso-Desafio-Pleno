@@ -12,14 +12,19 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long clientId;
 
+    @Column(nullable = false)
     private String perfil;
+
+    @Column(nullable = false)
     private Integer pontuacao;
 
-    @Column(name = "volume_investimentos")
+    @Column(name = "volume_investimentos", nullable = false)
     private BigDecimal volumeInvestimentos;
 
-    @Column(name = "frequencia_movimentacoes")
+    @Column(name = "frequencia_movimentacoes", nullable = false)
     private Integer frequenciaMovimentacoes;
+
+    @Column(nullable = false)
     private String preferencia;
 
     public Cliente() {

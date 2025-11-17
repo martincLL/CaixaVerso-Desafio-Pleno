@@ -12,23 +12,31 @@ public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long produtoId;
-    private String name;
+
+    @Column(nullable = false)
+    private String nome;
+
+    @Column(nullable = false)
     private String tipo;
+
+    @Column(nullable = false)
     private BigDecimal rentabilidade;
+
+    @Column(nullable = false)
     private String risco;
 
-    @Column(name = "prazo_minimo_meses")
+    @Column(name = "prazo_minimo_meses", nullable = false)
     private Integer prazoMinimoMeses;
 
-    @Column(name = "valor_minimo")
+    @Column(name = "valor_minimo", nullable = false)
     private BigDecimal valorMinimo;
 
     public Produto() {
     }
 
-    public Produto(Long produtoId, String name, String tipo, BigDecimal rentabilidade, String risco, Integer prazoMinimoMeses, BigDecimal valorMinimo) {
+    public Produto(Long produtoId, String nome, String tipo, BigDecimal rentabilidade, String risco, Integer prazoMinimoMeses, BigDecimal valorMinimo) {
         this.produtoId = produtoId;
-        this.name = name;
+        this.nome = nome;
         this.tipo = tipo;
         this.rentabilidade = rentabilidade;
         this.risco = risco;
@@ -44,12 +52,12 @@ public class Produto {
         this.produtoId = produtoId;
     }
 
-    public String getName() {
-        return name;
+    public String getNome() {
+        return nome;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNome(String name) {
+        this.nome = name;
     }
 
     public String getTipo() {
