@@ -11,7 +11,7 @@ public class Simulacao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long simulacaoId;
+    private Long id;
 
     @Column(name = "cliente_id", nullable = false)
     private Long clienteId;
@@ -37,8 +37,8 @@ public class Simulacao {
     public Simulacao() {
     }
 
-    public Simulacao(Long simulacaoId, Long clienteId, String produto, BigDecimal valorInvestido, BigDecimal valorFinal, BigDecimal rentabilidadeEfetiva, Integer prazoMeses, LocalDateTime dataSimulacao) {
-        this.simulacaoId = simulacaoId;
+    public Simulacao(Long id, Long clienteId, String produto, BigDecimal valorInvestido, BigDecimal valorFinal, BigDecimal rentabilidadeEfetiva, Integer prazoMeses, LocalDateTime dataSimulacao) {
+        this.id = id;
         this.clienteId = clienteId;
         this.produto = produto;
         this.valorInvestido = valorInvestido;
@@ -48,12 +48,12 @@ public class Simulacao {
         this.dataSimulacao = dataSimulacao;
     }
 
-    public Long getSimulacaoId() {
-        return simulacaoId;
+    public Long getId() {
+        return id;
     }
 
-    public void setSimulacaoId(Long simulacaoId) {
-        this.simulacaoId = simulacaoId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getClienteId() {
