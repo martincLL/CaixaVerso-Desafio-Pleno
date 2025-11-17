@@ -3,6 +3,8 @@ package com.caixa.caixaverso_desafio.entities;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_clientes")
@@ -27,6 +29,9 @@ public class Cliente {
 
     @Column(nullable = false)
     private String preferencia;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Historico> historicoInvestimentos = new ArrayList<>();
 
     public Cliente() {
     }
@@ -86,5 +91,13 @@ public class Cliente {
 
     public void setPreferencia(String preferencia) {
         this.preferencia = preferencia;
+    }
+
+    public List<Historico> getHistoricoInvestimentos() {
+        return historicoInvestimentos;
+    }
+
+    public void setHistoricoInvestimentos(List<Historico> historicoInvestimentos) {
+        this.historicoInvestimentos = historicoInvestimentos;
     }
 }
