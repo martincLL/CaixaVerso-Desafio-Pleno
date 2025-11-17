@@ -5,11 +5,12 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
+@Table(name = "tb_clientes")
 public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long clientId;
 
     private String perfil;
     private Integer pontuacao;
@@ -24,8 +25,8 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(Long id, String perfil, Integer pontuacao, BigDecimal volumeInvestimentos, Integer frequenciaMovimentacoes, String preferencia) {
-        this.id = id;
+    public Cliente(Long clientId, String perfil, Integer pontuacao, BigDecimal volumeInvestimentos, Integer frequenciaMovimentacoes, String preferencia) {
+        this.clientId = clientId;
         this.perfil = perfil;
         this.pontuacao = pontuacao;
         this.volumeInvestimentos = volumeInvestimentos;
@@ -33,12 +34,12 @@ public class Cliente {
         this.preferencia = preferencia;
     }
 
-    public Long getId() {
-        return id;
+    public Long getClientId() {
+        return clientId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setClientId(Long id) {
+        this.clientId = id;
     }
 
     public String getPerfil() {
