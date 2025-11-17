@@ -10,7 +10,7 @@ import java.time.LocalDate;
 public class Historico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long historicoId;
+    private Long id;
 
     @Column(nullable = false)
     private String tipo;
@@ -31,8 +31,8 @@ public class Historico {
     public Historico() {
     }
 
-    public Historico(Long historicoId, String tipo, BigDecimal valor, BigDecimal rentabilidade, LocalDate dataInvestimento, Cliente cliente) {
-        this.historicoId = historicoId;
+    public Historico(Long id, String tipo, BigDecimal valor, BigDecimal rentabilidade, LocalDate dataInvestimento, Cliente cliente) {
+        this.id = id;
         this.tipo = tipo;
         this.valor = valor;
         this.rentabilidade = rentabilidade;
@@ -40,12 +40,12 @@ public class Historico {
         this.cliente = cliente;
     }
 
-    public Long getHistoricoId() {
-        return historicoId;
+    public Long getId() {
+        return id;
     }
 
-    public void setHistoricoId(Long historicoId) {
-        this.historicoId = historicoId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTipo() {
