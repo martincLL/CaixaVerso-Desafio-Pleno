@@ -10,6 +10,7 @@ public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cliente_id")
     private Long clientId;
 
     @Column(nullable = false)
