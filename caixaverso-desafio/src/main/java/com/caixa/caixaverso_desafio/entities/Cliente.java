@@ -13,7 +13,7 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cliente_id")
-    private Long clientId;
+    private Long id;
 
     @Column(nullable = false)
     private String perfil;
@@ -36,8 +36,8 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(Long clientId, String perfil, Integer pontuacao, BigDecimal volumeInvestimentos, Integer frequenciaMovimentacoes, String preferencia) {
-        this.clientId = clientId;
+    public Cliente(Long id, String perfil, Integer pontuacao, BigDecimal volumeInvestimentos, Integer frequenciaMovimentacoes, String preferencia) {
+        this.id = id;
         this.perfil = perfil;
         this.pontuacao = pontuacao;
         this.volumeInvestimentos = volumeInvestimentos;
@@ -45,12 +45,12 @@ public class Cliente {
         this.preferencia = preferencia;
     }
 
-    public Long getClientId() {
-        return clientId;
+    public Long getId() {
+        return id;
     }
 
-    public void setClientId(Long id) {
-        this.clientId = id;
+    public void setClienteId(Long id) {
+        this.id = id;
     }
 
     public String getPerfil() {
