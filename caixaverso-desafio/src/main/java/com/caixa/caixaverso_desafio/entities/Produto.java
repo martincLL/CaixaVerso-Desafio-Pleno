@@ -1,7 +1,6 @@
 package com.caixa.caixaverso_desafio.entities;
 
 import jakarta.persistence.*;
-import lombok.extern.apachecommons.CommonsLog;
 
 import java.math.BigDecimal;
 

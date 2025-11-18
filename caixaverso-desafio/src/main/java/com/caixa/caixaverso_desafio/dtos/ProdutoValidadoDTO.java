@@ -1,5 +1,7 @@
 package com.caixa.caixaverso_desafio.dtos;
 
+import com.caixa.caixaverso_desafio.entities.Produto;
+
 import java.math.BigDecimal;
 
 public class ProdutoValidadoDTO {
@@ -19,6 +21,14 @@ public class ProdutoValidadoDTO {
         this.tipo = tipo;
         this.rentabilidade = rentabilidade;
         this.risco = risco;
+    }
+
+    public ProdutoValidadoDTO(Produto produto) {
+        this.id = produto.getId();
+        this.nome = produto.getNome();
+        this.tipo = produto.getTipo();
+        this.rentabilidade = produto.getRentabilidade();
+        this.risco = produto.getRisco();
     }
 
     public Long getId() {

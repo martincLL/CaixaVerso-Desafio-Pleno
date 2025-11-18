@@ -1,5 +1,7 @@
 package com.caixa.caixaverso_desafio.dtos;
 
+import com.caixa.caixaverso_desafio.entities.Simulacao;
+
 import java.math.BigDecimal;
 
 public class ResultadoSimulacaoDTO {
@@ -15,6 +17,12 @@ public class ResultadoSimulacaoDTO {
         this.valorFinal = valorFinal;
         this.rentabilidadeEfetiva = rentabilidadeEfetiva;
         this.prazoMeses = prazoMeses;
+    }
+
+    public ResultadoSimulacaoDTO(Simulacao simulacao) {
+        this.valorFinal = simulacao.getValorFinal();
+        this.rentabilidadeEfetiva = simulacao.getRentabilidadeEfetiva();
+        this.prazoMeses = simulacao.getPrazoMeses();
     }
 
     public BigDecimal getValorFinal() {
