@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,12 +33,12 @@ public class SimulacaoController {
     }
 
     @Operation(summary = "Simular um novo investimento", description = "Realiza a simulação e o cálculo de investimento em um produto específico")
-    @ApiResponses(@ApiResponse(responseCode = "200", description = "Simulação foi realizada com sucesso"))
+    @ApiResponses(@ApiResponse(responseCode = "201", description = "Simulação foi realizada com sucesso"))
     @PostMapping(value = "/simular-investimento")
     public ResponseEntity<SimulacaoResponseDTO> simularInvestimento(@RequestBody SimulacaoRequestDTO request) {
 
         SimulacaoResponseDTO response = simulacaoService.simularInvestimento(request);
-        return ResponseEntity.ok(response);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @Operation(summary = "Buscar o relatório de simulação", description = "Retorna o relatório da simulação realizada")
