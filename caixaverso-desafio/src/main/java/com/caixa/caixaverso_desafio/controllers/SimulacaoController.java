@@ -1,6 +1,7 @@
 package com.caixa.caixaverso_desafio.controllers;
 
 import com.caixa.caixaverso_desafio.dtos.HistoricoSimulacaoDTO;
+import com.caixa.caixaverso_desafio.dtos.RelatorioSimulacaoDTO;
 import com.caixa.caixaverso_desafio.dtos.SimulacaoRequestDTO;
 import com.caixa.caixaverso_desafio.dtos.SimulacaoResponseDTO;
 import com.caixa.caixaverso_desafio.services.SimulacaoService;
@@ -16,17 +17,25 @@ public class SimulacaoController {
     @Autowired
     private SimulacaoService simulacaoService;
 
-    @GetMapping("/simulacoes")
+    @GetMapping(value = "/simulacoes")
     public ResponseEntity<List<HistoricoSimulacaoDTO>> getHistorico() {
 
         List<HistoricoSimulacaoDTO> historico = simulacaoService.getHistoricoSimulacoes();
         return ResponseEntity.ok(historico);
     }
 
-    @PostMapping("/simular-investimento")
+    @PostMapping(value = "/simular-investimento")
     public ResponseEntity<SimulacaoResponseDTO> simularInvestimento(@RequestBody SimulacaoRequestDTO request) {
 
         SimulacaoResponseDTO response = simulacaoService.simularInvestimento(request);
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping(value = "/simulacoes/por-produto-dia")
+    public ResponseEntity<List<RelatorioSimulacaoDTO>> getRelatorioAgregado() {
+
+        List<RelatorioSimulacaoDTO> relatorio = simulacaoService.relatorioProdutoDia();
+
+        return ResponseEntity.ok(relatorio);
     }
 }

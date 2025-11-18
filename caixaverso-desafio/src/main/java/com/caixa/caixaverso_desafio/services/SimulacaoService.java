@@ -1,6 +1,7 @@
 package com.caixa.caixaverso_desafio.services;
 
 import com.caixa.caixaverso_desafio.dtos.HistoricoSimulacaoDTO;
+import com.caixa.caixaverso_desafio.dtos.RelatorioSimulacaoDTO;
 import com.caixa.caixaverso_desafio.dtos.SimulacaoRequestDTO;
 import com.caixa.caixaverso_desafio.dtos.SimulacaoResponseDTO;
 import com.caixa.caixaverso_desafio.entities.Produto;
@@ -25,6 +26,11 @@ public class SimulacaoService {
 
     @Autowired
     private SimulacaoRepository simulacaoRepository;
+
+    @Transactional(readOnly = true)
+    public List<RelatorioSimulacaoDTO> relatorioProdutoDia() {
+        return simulacaoRepository.relatorioProdutoDia();
+    }
 
     @Transactional
     public SimulacaoResponseDTO simularInvestimento(SimulacaoRequestDTO requestDTO) {
