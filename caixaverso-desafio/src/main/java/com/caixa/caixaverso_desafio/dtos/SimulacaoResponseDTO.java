@@ -1,5 +1,8 @@
 package com.caixa.caixaverso_desafio.dtos;
 
+import com.caixa.caixaverso_desafio.entities.Produto;
+import com.caixa.caixaverso_desafio.entities.Simulacao;
+
 import java.time.LocalDateTime;
 
 public class SimulacaoResponseDTO {
@@ -15,6 +18,12 @@ public class SimulacaoResponseDTO {
         this.produtValidado = produtValidado;
         this.resultadoSimulacao = resultadoSimulacao;
         this.dataSimilacao = dataSimilacao;
+    }
+
+    public SimulacaoResponseDTO(Produto produto, Simulacao simulacao) {
+        this.produtValidado = new ProdutoValidadoDTO(produto);
+        this.resultadoSimulacao = new ResultadoSimulacaoDTO(simulacao);
+        this.dataSimilacao = simulacao.getDataSimulacao();
     }
 
     public ProdutoValidadoDTO getProdutValidado() {
