@@ -18,7 +18,7 @@ public class HistoricoController {
     @Autowired
     private HistoricoService historicoService;
 
-    @GetMapping("/{clienteId}")
+    @GetMapping(value = "/{clienteId}")
     public ResponseEntity<List<HistoricoInvestimentoDTO>> getInvestimentos(@PathVariable Long clienteId) {
 
         List<HistoricoInvestimentoDTO> investimentos = historicoService.getInvestimentosPorClienteId(clienteId);
