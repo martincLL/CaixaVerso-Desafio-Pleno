@@ -2,13 +2,20 @@ package com.caixa.caixaverso_desafio.dtos;
 
 import com.caixa.caixaverso_desafio.entities.Produto;
 import com.caixa.caixaverso_desafio.entities.Simulacao;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.time.LocalDateTime;
 
+@Schema(description = "Resposta da simulação")
 public class SimulacaoResponseDTO {
 
+    @Schema(description = "Dados do produto que foi selecionado e validado")
     private ProdutoValidadoDTO produtValidado;
+
+    @Schema(description = "Resultado dos cálculos da simulação")
     private ResultadoSimulacaoDTO resultadoSimulacao;
+
+    @Schema(description = "Data e hora da simulação")
     private LocalDateTime dataSimilacao;
 
     public SimulacaoResponseDTO() {

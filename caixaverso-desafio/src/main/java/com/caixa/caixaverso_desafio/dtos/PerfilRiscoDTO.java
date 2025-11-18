@@ -1,10 +1,20 @@
 package com.caixa.caixaverso_desafio.dtos;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(description = "Análise do perfil de risco do cliente")
 public class PerfilRiscoDTO {
 
+    @Schema(description = "ID do cliente")
     private Long clienteId;
+
+    @Schema(description = "Perfil de risco do ciente")
     private String perfil;
+
+    @Schema(description = "Pontuação do cliente")
     private Integer pontuacao;
+
+    @Schema(description = "Descrição do perfil do cliente")
     private String descricao;
 
     public PerfilRiscoDTO() {

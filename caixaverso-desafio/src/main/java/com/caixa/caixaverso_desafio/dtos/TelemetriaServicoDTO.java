@@ -1,9 +1,17 @@
 package com.caixa.caixaverso_desafio.dtos;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(description = "Dados das chamadas da API")
 public class TelemetriaServicoDTO {
 
+    @Schema(description = "Nome do endpoint")
     private String nome;
+
+    @Schema(description = "Chamadas recebidas")
     private Long quantidadeChamadas;
+
+    @Schema(description = "Tempo médio de processamento")
     private Long mediaTempoRespostaMs;
 
     public TelemetriaServicoDTO() {

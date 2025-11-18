@@ -1,18 +1,33 @@
 package com.caixa.caixaverso_desafio.dtos;
 
 import com.caixa.caixaverso_desafio.entities.Simulacao;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+@Schema(description = "Histórico da simulação realizada")
 public class HistoricoSimulacaoDTO {
 
+    @Schema(description = "ID do histórico")
     private Long id;
+
+    @Schema(description = "ID do cliente")
     private Long clinteId;
+
+    @Schema(description = "Produto do histórico")
     private String produto;
+
+    @Schema(description = "Valor investido no produto")
     private BigDecimal valorInvestido;
+
+    @Schema(description = "Valor final da aplicação")
     private BigDecimal valorFinal;
+
+    @Schema(description = "Prazo em meses do investimento")
     private Integer prazoMeses;
+
+    @Schema(description = "Data da simulação")
     private LocalDateTime dataSimulacao;
 
     public HistoricoSimulacaoDTO() {

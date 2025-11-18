@@ -1,15 +1,26 @@
 package com.caixa.caixaverso_desafio.dtos;
 
 import com.caixa.caixaverso_desafio.entities.Produto;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.math.BigDecimal;
 
+@Schema(description = "Produto de investimento validado")
 public class ProdutoValidadoDTO {
 
+    @Schema(description = "ID do produto")
     private Long id;
+
+    @Schema(description = "Nome do produto validado")
     private String nome;
+
+    @Schema(description = "Tipo do produto validado", example = "CDB")
     private String tipo;
+
+    @Schema(description = "Rentabilidade do produto de investimento")
     private BigDecimal rentabilidade;
+
+    @Schema(description = "Risco do investimento", example = "Baixo")
     private String risco;
 
     public ProdutoValidadoDTO() {

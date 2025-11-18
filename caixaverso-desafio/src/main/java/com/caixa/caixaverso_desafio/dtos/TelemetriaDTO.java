@@ -1,10 +1,16 @@
 package com.caixa.caixaverso_desafio.dtos;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import java.util.List;
 
+@Schema(description = "Dados técnicos de monitoramento da API")
 public class TelemetriaDTO {
 
+    @Schema(description = "Lista com os dados")
     private List<TelemetriaServicoDTO> servicos;
+
+    @Schema(description = "Periodo dos dados")
     private PeriodoDTO periodo;
 
     public TelemetriaDTO() {

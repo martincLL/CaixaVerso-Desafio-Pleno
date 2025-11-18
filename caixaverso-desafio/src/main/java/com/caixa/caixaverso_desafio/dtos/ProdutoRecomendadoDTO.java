@@ -1,15 +1,26 @@
 package com.caixa.caixaverso_desafio.dtos;
 
 import com.caixa.caixaverso_desafio.entities.Produto;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.math.BigDecimal;
 
+@Schema(description = "Produto de investimento sugerido para o perfil de cada cliente")
 public class ProdutoRecomendadoDTO {
 
+    @Schema(description = "ID do produto")
     private Long id;
+
+    @Schema(description = "Nome do produto sugerido")
     private String nome;
+
+    @Schema(description = "Tipo do produto sugerido")
     private String tipo;
+
+    @Schema(description = "Rentabilidade do investimento sugerido")
     private BigDecimal rentabilidade;
+
+    @Schema(description = "Risco do produto recomendado")
     private String risco;
 
     public ProdutoRecomendadoDTO() {

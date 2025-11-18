@@ -1,13 +1,20 @@
 package com.caixa.caixaverso_desafio.dtos;
 
 import com.caixa.caixaverso_desafio.entities.Simulacao;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.math.BigDecimal;
 
+@Schema(description = "Resultado da simulação")
 public class ResultadoSimulacaoDTO {
 
+    @Schema(description = "Valor líquido final da simulação")
     private BigDecimal valorFinal;
+
+    @Schema(description = "Rentabilidade do produto")
     private BigDecimal rentabilidadeEfetiva;
+
+    @Schema(description = "Prazo em meses do investimento")
     private Integer prazoMeses;
 
     public ResultadoSimulacaoDTO() {

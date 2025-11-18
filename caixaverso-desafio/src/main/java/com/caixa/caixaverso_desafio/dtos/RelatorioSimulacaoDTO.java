@@ -1,13 +1,23 @@
 package com.caixa.caixaverso_desafio.dtos;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+@Schema(description = "Relatório dos dados das simulações por dia e produto")
 public class RelatorioSimulacaoDTO {
 
+    @Schema(description = "Nome do produto")
     private String produto;
+
+    @Schema(description = "Data da simulação")
     private LocalDate data;
+
+    @Schema(description = "Quantidade de Simulações realizadas")
     private Long quantidadeSimulacoes;
+
+    @Schema(description = "Média dos valores simulados")
     private BigDecimal mediaValorFinal;
 
     public RelatorioSimulacaoDTO() {
