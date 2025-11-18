@@ -4,30 +4,30 @@ import java.util.List;
 
 public class TelemetriaDTO {
 
-    private List<TelemetriaServicoDTO> telemetriaServico;
-    private PeriodoDTO periodoDTO;
+    private List<TelemetriaServicoDTO> servicos;
+    private PeriodoDTO periodo;
 
     public TelemetriaDTO() {
     }
 
-    public TelemetriaDTO(List<TelemetriaServicoDTO> telemetriaServico, PeriodoDTO periodoDTO) {
-        this.telemetriaServico = telemetriaServico;
-        this.periodoDTO = periodoDTO;
+    public TelemetriaDTO(List<TelemetriaServicoDTO> servicos, PeriodoDTO periodo) {
+        this.servicos = servicos;
+        this.periodo = periodo;
     }
 
-    public List<TelemetriaServicoDTO> getTelemetriaServico() {
-        return telemetriaServico;
+    public List<TelemetriaServicoDTO> getServicos() {
+        return servicos;
     }
 
-    public void setTelemetriaServico(List<TelemetriaServicoDTO> telemetriaServico) {
-        this.telemetriaServico = telemetriaServico;
+    public void setServicos(List<TelemetriaServicoDTO> servicos) {
+        this.servicos = servicos;
     }
 
-    public PeriodoDTO getPeriodoDTO() {
-        return periodoDTO;
+    public PeriodoDTO getPeriodo() {
+        return periodo;
     }
 
-    public void setPeriodoDTO(PeriodoDTO periodoDTO) {
-        this.periodoDTO = periodoDTO;
+    public void setPeriodo(PeriodoDTO periodo) {
+        this.periodo = periodo;
     }
 }

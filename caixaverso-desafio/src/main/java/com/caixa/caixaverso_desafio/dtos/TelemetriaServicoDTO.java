@@ -3,15 +3,15 @@ package com.caixa.caixaverso_desafio.dtos;
 public class TelemetriaServicoDTO {
 
     private String nome;
-    private Long quantidadeChamados;
+    private Long quantidadeChamadas;
     private Long mediaTempoRespostaMs;
 
     public TelemetriaServicoDTO() {
     }
 
-    public TelemetriaServicoDTO(String nome, Long quantidadeChamados, Long mediaTempoRespostaMs) {
+    public TelemetriaServicoDTO(String nome, Long quantidadeChamadas, Long mediaTempoRespostaMs) {
         this.nome = nome;
-        this.quantidadeChamados = quantidadeChamados;
+        this.quantidadeChamadas = quantidadeChamadas;
         this.mediaTempoRespostaMs = mediaTempoRespostaMs;
     }
 
@@ -23,12 +23,12 @@ public class TelemetriaServicoDTO {
         this.nome = nome;
     }
 
-    public Long getQuantidadeChamados() {
-        return quantidadeChamados;
+    public Long getQuantidadeChamadas() {
+        return quantidadeChamadas;
     }
 
-    public void setQuantidadeChamados(Long quantidadeChamados) {
-        this.quantidadeChamados = quantidadeChamados;
+    public void setQuantidadeChamadas(Long quantidadeChamadas) {
+        this.quantidadeChamadas = quantidadeChamadas;
     }
 
     public Long getMediaTempoRespostaMs() {
