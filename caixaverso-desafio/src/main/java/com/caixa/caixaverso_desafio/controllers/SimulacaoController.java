@@ -33,7 +33,11 @@ public class SimulacaoController {
     }
 
     @Operation(summary = "Simular um novo investimento", description = "Realiza a simulação e o cálculo de investimento em um produto específico")
-    @ApiResponses(@ApiResponse(responseCode = "201", description = "Simulação foi realizada com sucesso"))
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Simulação foi realizada com sucesso"),
+            @ApiResponse(responseCode = "400", description = "Dados da requisição estão inválidos"),
+            @ApiResponse(responseCode = "404", description = "Cliente ou Produto não encontrado")
+    })
     @PostMapping(value = "/simular-investimento")
     public ResponseEntity<SimulacaoResponseDTO> simularInvestimento(@RequestBody SimulacaoRequestDTO request) {
 
@@ -42,7 +46,7 @@ public class SimulacaoController {
     }
 
     @Operation(summary = "Buscar o relatório de simulação", description = "Retorna o relatório da simulação realizada")
-    @ApiResponses(@ApiResponse(responseCode = "200", description = "Relatório de simulação retornado com sucesso"))
+    @ApiResponse(responseCode = "200", description = "Relatório de simulação retornado com sucesso")
     @GetMapping(value = "/simulacoes/por-produto-dia")
     public ResponseEntity<List<RelatorioSimulacaoDTO>> getRelatorioAgregado() {
 
