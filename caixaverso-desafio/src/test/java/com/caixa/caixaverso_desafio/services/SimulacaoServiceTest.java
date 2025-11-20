@@ -4,6 +4,7 @@ import com.caixa.caixaverso_desafio.dtos.SimulacaoRequestDTO;
 import com.caixa.caixaverso_desafio.dtos.SimulacaoResponseDTO;
 import com.caixa.caixaverso_desafio.entities.Produto;
 import com.caixa.caixaverso_desafio.entities.Simulacao;
+import com.caixa.caixaverso_desafio.repositories.ClienteRepository;
 import com.caixa.caixaverso_desafio.repositories.ProdutoRepository;
 import com.caixa.caixaverso_desafio.repositories.SimulacaoRepository;
 import org.junit.jupiter.api.DisplayName;
@@ -31,6 +32,9 @@ public class SimulacaoServiceTest {
     private ProdutoRepository produtoRepository;
 
     @Mock
+    private ClienteRepository clienteRepository;
+
+    @Mock
     private SimulacaoRepository simulacaoRepository;
 
     @Test
@@ -52,6 +56,7 @@ public class SimulacaoServiceTest {
         request.setValor(new BigDecimal("15000.00"));
         request.setPrazoMeses(12);
 
+        when(clienteRepository.existsById(1L)).thenReturn(true);
         when(produtoRepository.findFirstByTipo("CDB")).thenReturn(Optional.of(produtoTeste));
         when(simulacaoRepository.save(any(Simulacao.class))).thenAnswer(x -> x.getArguments()[0]);
 
@@ -74,10 +79,12 @@ public class SimulacaoServiceTest {
         produtoTeste.setTipo("LCI");
 
         SimulacaoRequestDTO request = new SimulacaoRequestDTO();
+        request.setClienteId(1L);
         request.setTipoProduto("LCI");
         request.setValor(new BigDecimal("5000.00"));
         request.setPrazoMeses(11);
 
+        when(clienteRepository.existsById(1L)).thenReturn(true);
         when(produtoRepository.findFirstByTipo("LCI")).thenReturn(Optional.of(produtoTeste));
         when(simulacaoRepository.save(any(Simulacao.class))).thenAnswer(x -> x.getArguments()[0]);
 
@@ -96,10 +103,12 @@ public class SimulacaoServiceTest {
         produtoTeste.setPrazoMinimoMeses(6);
 
         SimulacaoRequestDTO request = new SimulacaoRequestDTO();
+        request.setClienteId(1L);
         request.setTipoProduto("CDB");
         request.setValor(new BigDecimal("1500.00"));
         request.setPrazoMeses(5);
 
+        when(clienteRepository.existsById(1L)).thenReturn(true);
         when(produtoRepository.findFirstByTipo("CDB")).thenReturn(Optional.of(produtoTeste));
 
         RuntimeException e = assertThrows(RuntimeException.class, () -> simulacaoService.simularInvestimento(request));
@@ -116,9 +125,11 @@ public class SimulacaoServiceTest {
         produtoTeste.setValorMinimo(new BigDecimal("8000.00"));
 
         SimulacaoRequestDTO request = new SimulacaoRequestDTO();
+        request.setClienteId(1L);
         request.setTipoProduto("CDB");
         request.setValor(new BigDecimal("4500.00"));
 
+        when(clienteRepository.existsById(1L)).thenReturn(true);
         when(produtoRepository.findFirstByTipo("CDB")).thenReturn(Optional.of(produtoTeste));
 
         RuntimeException e = assertThrows(RuntimeException.class, () -> simulacaoService.simularInvestimento(request));

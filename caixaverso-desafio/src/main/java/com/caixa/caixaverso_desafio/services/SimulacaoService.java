@@ -6,9 +6,12 @@ import com.caixa.caixaverso_desafio.dtos.SimulacaoRequestDTO;
 import com.caixa.caixaverso_desafio.dtos.SimulacaoResponseDTO;
 import com.caixa.caixaverso_desafio.entities.Produto;
 import com.caixa.caixaverso_desafio.entities.Simulacao;
+import com.caixa.caixaverso_desafio.exceptions.AppException;
+import com.caixa.caixaverso_desafio.repositories.ClienteRepository;
 import com.caixa.caixaverso_desafio.repositories.ProdutoRepository;
 import com.caixa.caixaverso_desafio.repositories.SimulacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,6 +28,9 @@ public class SimulacaoService {
     private ProdutoRepository produtoRepository;
 
     @Autowired
+    ClienteRepository clienteRepository;
+
+    @Autowired
     private SimulacaoRepository simulacaoRepository;
 
     @Transactional(readOnly = true)
@@ -35,14 +41,22 @@ public class SimulacaoService {
     @Transactional
     public SimulacaoResponseDTO simularInvestimento(SimulacaoRequestDTO requestDTO) {
 
+        if(requestDTO.getClienteId() == null) {
+            throw new AppException("O ID do cliente é obrigatório", HttpStatus.BAD_REQUEST);
+        }
+
+        if(!clienteRepository.existsById(requestDTO.getClienteId())) {
+            throw new AppException("Esse cliente não existe", HttpStatus.NOT_FOUND);
+        }
+
         Produto produtoSimulacao = produtoRepository.findFirstByTipo(requestDTO.getTipoProduto())
-                .orElseThrow(() -> new RuntimeException("Esse tipo de produto não foi encontrado"));
+                .orElseThrow(() -> new AppException("Esse tipo de produto não foi encontrado", HttpStatus.NOT_FOUND));
 
         if(requestDTO.getValor().compareTo(produtoSimulacao.getValorMinimo()) < 0) {
-            throw new RuntimeException("O valor da simulação está abaixo do mínimo permitido");
+            throw new AppException("O valor da simulação está abaixo do mínimo permitido", HttpStatus.BAD_REQUEST);
         }
         if(requestDTO.getPrazoMeses() < produtoSimulacao.getPrazoMinimoMeses()) {
-            throw new RuntimeException("O prazo da simulação está abaixo do mínimo permitido");
+            throw new AppException("O prazo da simulação está abaixo do mínimo permitido", HttpStatus.BAD_REQUEST);
         }
 
         BigDecimal valorFinal = calcularValorLiquido(requestDTO.getValor(), produtoSimulacao.getRentabilidade(), requestDTO.getPrazoMeses(), produtoSimulacao.getTipo());

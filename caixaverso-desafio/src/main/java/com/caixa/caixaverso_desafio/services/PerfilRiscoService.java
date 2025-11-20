@@ -2,8 +2,10 @@ package com.caixa.caixaverso_desafio.services;
 
 import com.caixa.caixaverso_desafio.dtos.PerfilRiscoDTO;
 import com.caixa.caixaverso_desafio.entities.Cliente;
+import com.caixa.caixaverso_desafio.exceptions.AppException;
 import com.caixa.caixaverso_desafio.repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,7 +21,7 @@ public class PerfilRiscoService {
     public PerfilRiscoDTO calcularPerfilRisco(Long clienteId) {
 
         Cliente cliente = clienteRepository.findById(clienteId)
-                .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+                .orElseThrow(() -> new AppException("Cliente não encontrado", HttpStatus.NOT_FOUND));
 
         int pontuacao = calcularPontuacao(cliente);
 
