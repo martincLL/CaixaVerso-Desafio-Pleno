@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 public class SimulacaoResponseDTO {
 
     @Schema(description = "Dados do produto que foi selecionado e validado")
-    private ProdutoValidadoDTO produtValidado;
+    private ProdutoValidadoDTO produtoValidado;
 
     @Schema(description = "Resultado dos cálculos da simulação")
     private ResultadoSimulacaoDTO resultadoSimulacao;
@@ -21,24 +21,24 @@ public class SimulacaoResponseDTO {
     public SimulacaoResponseDTO() {
     }
 
-    public SimulacaoResponseDTO(ProdutoValidadoDTO produtValidado, ResultadoSimulacaoDTO resultadoSimulacao, LocalDateTime dataSimilacao) {
-        this.produtValidado = produtValidado;
+    public SimulacaoResponseDTO(ProdutoValidadoDTO produtoValidado, ResultadoSimulacaoDTO resultadoSimulacao, LocalDateTime dataSimilacao) {
+        this.produtoValidado = produtoValidado;
         this.resultadoSimulacao = resultadoSimulacao;
         this.dataSimilacao = dataSimilacao;
     }
 
     public SimulacaoResponseDTO(Produto produto, Simulacao simulacao) {
-        this.produtValidado = new ProdutoValidadoDTO(produto);
+        this.produtoValidado = new ProdutoValidadoDTO(produto);
         this.resultadoSimulacao = new ResultadoSimulacaoDTO(simulacao);
         this.dataSimilacao = simulacao.getDataSimulacao();
     }
 
-    public ProdutoValidadoDTO getProdutValidado() {
-        return produtValidado;
+    public ProdutoValidadoDTO getProdutoValidado() {
+        return produtoValidado;
     }
 
-    public void setProdutValidado(ProdutoValidadoDTO produtValidado) {
-        this.produtValidado = produtValidado;
+    public void setProdutoValidado(ProdutoValidadoDTO produtoValidado) {
+        this.produtoValidado = produtoValidado;
     }
 
     public ResultadoSimulacaoDTO getResultadoSimulacao() {

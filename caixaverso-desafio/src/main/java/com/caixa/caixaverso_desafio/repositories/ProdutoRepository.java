@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository
 public interface ProdutoRepository extends JpaRepository<Produto, Long> {
 
-    Optional<Produto> findByTipo(String tipo);
+    Optional<Produto> findFirstByTipo(String tipo);
 
     List<Produto> findByRiscoIn(List<String> riscos);
 }

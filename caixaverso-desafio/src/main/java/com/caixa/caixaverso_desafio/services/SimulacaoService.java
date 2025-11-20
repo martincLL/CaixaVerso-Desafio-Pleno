@@ -35,7 +35,7 @@ public class SimulacaoService {
     @Transactional
     public SimulacaoResponseDTO simularInvestimento(SimulacaoRequestDTO requestDTO) {
 
-        Produto produtoSimulacao = produtoRepository.findByTipo(requestDTO.getTipoProduto())
+        Produto produtoSimulacao = produtoRepository.findFirstByTipo(requestDTO.getTipoProduto())
                 .orElseThrow(() -> new RuntimeException("Esse tipo de produto não foi encontrado"));
 
         if(requestDTO.getValor().compareTo(produtoSimulacao.getValorMinimo()) < 0) {
