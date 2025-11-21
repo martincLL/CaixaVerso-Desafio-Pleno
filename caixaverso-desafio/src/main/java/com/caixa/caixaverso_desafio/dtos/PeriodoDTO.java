@@ -1,5 +1,6 @@
 package com.caixa.caixaverso_desafio.dtos;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.time.LocalDateTime;
@@ -8,9 +9,11 @@ import java.time.LocalDateTime;
 public class PeriodoDTO {
 
     @Schema(description = "Data de início do monitoramento")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDateTime inicio;
 
     @Schema(description = "Fim do monitoramento")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDateTime fim;
 
     public PeriodoDTO() {
